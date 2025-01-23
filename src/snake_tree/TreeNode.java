@@ -1,4 +1,4 @@
-package binaryTree;
+package snake_tree;
 
 /**
  *

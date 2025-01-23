@@ -1,5 +1,3 @@
-
-
 package binaryTree;
 
 import java.util.ArrayList;
@@ -15,11 +13,10 @@ import java.util.Set;
  *
  */
 public class KDistance {
-    
-    public List<Integer> distanceK(TreeNode root, TreeNode target, int K) {        
+
+    public List<Integer> distanceK(TreeNode root, TreeNode target, int K) {
         Map<TreeNode, TreeNode> parent = new HashMap();
         Queue<TreeNode> queue = new LinkedList();
-
 
         // build the map, relation of node and its parent
         dfs(root, null, parent);
@@ -28,13 +25,14 @@ public class KDistance {
         seen.add(target);
         int level = 0;
 
-
         // typical bfs 
-        while (!queue.isEmpty()) {            
-            if(level == K) break;
-            int size = queue.size();            
-            for(int i = 0 ; i < size; i++) {                            
-                TreeNode node = queue.poll();         
+        while (!queue.isEmpty()) {
+            if (level == K) {
+                break;
+            }
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
                 if (node.left != null && !seen.contains(node.left)) {
                     seen.add(node.left);
                     queue.offer(node.left);
@@ -50,17 +48,16 @@ public class KDistance {
                 }
             }
             level++;
-        }      
-
+        }
 
         // populate all values of node in queue
         List<Integer> ans = new ArrayList();
-        for (TreeNode n: queue)
+        for (TreeNode n : queue) {
             ans.add(n.val);
-        return ans;                   
+        }
+        return ans;
     }
 
-    
     public void dfs(TreeNode node, TreeNode rootParent, Map<TreeNode, TreeNode> parent) {
         if (node != null) {
             //key is node, value is its parent

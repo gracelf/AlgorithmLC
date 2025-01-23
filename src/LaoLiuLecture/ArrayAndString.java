@@ -22,14 +22,13 @@ public class ArrayAndString {
             return "";
         }
         ///length = slow -1!!!
-        return chars[0] == ' ' ? new String(chars, 1, slow-1) : new String(chars, 0, slow);
+        return chars[0] == ' ' ? new String(chars, 1, slow - 1) : new String(chars, 0, slow);
     }
-    
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         String test = "     get an offer     !";
         System.out.println("result:" + removeSpaces(test));
-        
-    
+
     }
 
 }
