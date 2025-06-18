@@ -15,10 +15,10 @@ public class LC220ContainsDuplicateIII {
             }
             int min = nums[i] - valueDiff;
             int max = nums[i] + valueDiff;
-            Integer data = set.ceiling(min); // next bigger or equal value of in the set
-            //System.out.println(min + ":" + (data != null ? data : 0));
-            if (data != null && Integer.compare(data, max) <= 0) { //meaning data<=max
-                System.out.println("data :" + data + ", max: " + max + ", i:" + i);
+            Integer data = set.ceiling(min); // next bigger or equal value of in the set, min<=data
+            System.out.println("i: " + i + ", min: " + min + ", data:" + (data != null ? data : null));
+            if (data != null && Integer.compare(data, max) <= 0) { //meaning min<=data<=max
+                System.out.println("data: " + data + ", max: " + max + ", i:" + i);
                 return true;
             }
             set.add(nums[i]);
@@ -31,9 +31,10 @@ public class LC220ContainsDuplicateIII {
         int[] nums = new int[]{1, 3, 7, 2};
         System.out.println("test case res: " + sol.containsNearbyAlmostDuplicate(nums, 3, 1));
 
-        int[] nums2 = new int[]{1, 2, 3, 1};
-        System.out.println("test case 2 res: " + sol.containsNearbyAlmostDuplicate(nums2, 3, 0));
+        int[] nums2 = new int[]{1, 5, 9, 1, 5, 9};
+        System.out.println("test case 2 res: " + sol.containsNearbyAlmostDuplicate(nums2, 2, 3));
 
+        //test treeset's ceiling and floor function
         TreeSet<Integer> treeSet = new TreeSet<>();
 
         // populate the TreeSet 
@@ -43,7 +44,7 @@ public class LC220ContainsDuplicateIII {
         treeSet.add(40);
 
         // Print the TreeSet 
-        System.out.println("====== test for TreeSet: " + treeSet);
+        System.out.println("====== test the ceiling and floor function, for TreeSet: " + treeSet);
         System.out.println("Ceiling value for 25: " + treeSet.ceiling(25)); //return 30, next bigger value in the tree set
         System.out.println("floor value for 25: " + treeSet.floor(25)); //return 20, next smaller value in the tree set
 
